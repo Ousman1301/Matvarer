@@ -17,7 +17,10 @@ def show_time():
         lines = f.readlines()
     return lines
 
-schedule.every().hour.at(":00").do(create_time)
+schedule.every().hour.at(":12").do(create_time)
+schedule.every().hour.at(":22").do(create_time)
+schedule.every().hour.at(":32").do(create_time)
+schedule.every().hour.at(":42").do(create_time)
 
 
 while True:

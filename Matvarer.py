@@ -6,6 +6,7 @@ import os
 import schedule
 import time
 
+
 def create_time():
     current_time = datetime.now().strftime("%H:%M:%S")
     with open('readme.txt', 'w') as f:
@@ -16,7 +17,7 @@ def show_time():
         lines = f.readlines()
     return lines
 
-schedule.every().hour.at(":49").do(create_time)
+schedule.every().hour.at(":53").do(create_time)
 
 
 while True:

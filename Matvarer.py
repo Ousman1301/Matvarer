@@ -3,7 +3,29 @@ import streamlit as st
 from datetime import datetime
 from datetime import date
 import os 
+import schedule
+import time
 
+def create_time():
+    current_time = datetime.now().strftime("%H:%M:%S")
+    with open('readme.txt', 'w') as f:
+        f.write(current_time)
+        
+def show_time():
+    with open('readme.txt') as f:
+        lines = f.readlines()
+    return lines
+
+schedule.every().hour.at(":11").do(create_time)
+
+
+while True:
+    schedule.run_pending()
+    time.sleep(5)
+    h = show_time()
+    st.write(h)
+
+    
 def Registrer_vare():
     Dato = datetime.now().strftime("%d-%m-%Y")
     Dato_tekst = datetime.now().strftime("%d-%b-%Y")
@@ -45,6 +67,7 @@ if option == 'Registrer vare':
     Registrer = st.button('Registrer matvare')
     if Registrer:
         Registrer_vare()
+        st.write("Vare registrert!")
 
 
 
